@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>zuul-study</module>
+        <module>eureka-server</module>
     </modules>
     <packaging>pom</packaging>
 
