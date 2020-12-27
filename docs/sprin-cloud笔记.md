@@ -1,0 +1,1 @@
+查询spring-cloud与spring-boot版本依赖：https://start.spring.io/actuator/info
