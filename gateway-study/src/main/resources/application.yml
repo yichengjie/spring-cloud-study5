@@ -6,11 +6,23 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: test
-          uri: http://news.baidu.com/
+        - id: baidu
+          uri: http://baidu.com:80/
           predicates:
-            - Path=/test/**
+            - Path=/baidu
         - id: juejin
           uri: https://juejin.im/user/5aa50b96f265da23866f836e
           predicates:
             - Path=/juejin/**
+logging:
+  level:
+    org.springframework.cloud.gateway: trace
+    org.springframework.http.server.reactive: debug
+    org.springframework.web.reactive: debug
+    reactor.ipc.netty: debug
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
