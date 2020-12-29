@@ -13,6 +13,11 @@ public class HelloController {
         return "hello world" ;
     }
 
+    @GetMapping("/xxx")
+    public String xxx(){
+        return "hello xxx" ;
+    }
+
     @PostMapping("/submitForm")
     public UserInfoVo submitForm(UserInfoVo userInfoVo){
         userInfoVo.setUsername(userInfoVo.getUsername() +" : OK");

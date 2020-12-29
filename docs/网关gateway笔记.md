@@ -81,7 +81,7 @@
         }
     }
     ```
-2. 将自定义filter加入到路由规则中
+2. 将自定义filter加入到路由规则中 （Gateway不能直接URL重写）
     ```java
     @Configuration
     public class MyConfig {
@@ -90,7 +90,8 @@
             return builder.routes()
                 .route(r -> r.path("/customer/**")
                         .filters(f -> f.stripPrefix(1).filter(new CustomGatewayFilter()))
-                        .uri("http://localhost:8081")
+                       // 注意这里写http://localhost:8081与写http://localhost:8081/hello效果一样
+                        .uri("http://localhost:8081/hello")
                         .order(0)
                         .id("customer_filter_router")
                 )
@@ -98,4 +99,5 @@
         }
     }
     ```
+ 
 
