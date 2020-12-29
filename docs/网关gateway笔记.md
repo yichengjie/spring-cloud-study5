@@ -62,4 +62,40 @@
     spring.cloud.gateway.routes[2].predicates[0]=Path=/client-a/**
     spring.cloud.gateway.routes[2].filters[0]=RewritePath=/client-a/(?<segment>.*),/$\\{segment}
     ```
+#### 自定义GatewayFilter
+1. 编写自定义filter业务类
+    ```java
+    @Slf4j
+    public class CustomGatewayFilter implements GatewayFilter {
+        private static final String COUNT_START_TIME = "COUNT_START_TIME" ;
+        @Override
+        public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+            exchange.getAttributes().put(COUNT_START_TIME, System.currentTimeMillis()) ;
+            return chain.filter(exchange).then(
+               Mono.fromRunnable(()->{
+                   Long startTime = exchange.getAttribute(COUNT_START_TIME);
+                   long endTime = (System.currentTimeMillis() - startTime) ;
+                   log.info("=====> " + exchange.getRequest().getURI().getRawPath() +": " + endTime +"ms");
+               })
+            );
+        }
+    }
+    ```
+2. 将自定义filter加入到路由规则中
+    ```java
+    @Configuration
+    public class MyConfig {
+        @Bean
+        public RouteLocator customerRouteLocator(RouteLocatorBuilder builder) {
+            return builder.routes()
+                .route(r -> r.path("/customer/**")
+                        .filters(f -> f.stripPrefix(1).filter(new CustomGatewayFilter()))
+                        .uri("http://localhost:8081")
+                        .order(0)
+                        .id("customer_filter_router")
+                )
+                .build();
+        }
+    }
+    ```
 
