@@ -12,6 +12,7 @@
         <module>eureka-server</module>
         <module>eureka-client-a</module>
         <module>gateway-study</module>
+        <module>reactor-study</module>
     </modules>
     <packaging>pom</packaging>
 
