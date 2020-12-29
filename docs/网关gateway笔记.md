@@ -1,12 +1,65 @@
-#### 网关基本使用
+#### 网关基础配置
 1. 添加依赖
     ```xml
     <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-gateway</artifactId>
     </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
     ```
 2. 添加配置
-```xml
-
+    ```properties
+    server.port=8080
+    spring.application.name=gateway-server
+    # 配置路由规则
+    # 路由规则1
+    spring.cloud.gateway.routes[0].id=baidu
+    spring.cloud.gateway.routes[0].uri=https://www.baidu.com/
+    spring.cloud.gateway.routes[0].predicates[0]=Path=/baidu/**
+    spring.cloud.gateway.routes[0].filters[0]=StripPrefix=1
+    # 路由规则2
+    spring.cloud.gateway.routes[1].id=jd
+    spring.cloud.gateway.routes[1].uri=https://www.jd.com/
+    spring.cloud.gateway.routes[1].predicates[0]=Path=/jd/**
+    spring.cloud.gateway.routes[1].filters[0]=StripPrefix=1
+    # 配置日志
+    logging.level.org.springframework.cloud.gateway=trace
+    logging.level.org.springframework.http.server.reactive=debug
+    logging.level.org.springframework.web.reactive=debug
+    logging.level.reactor.ipc.netty=debug
+    # 配置actuator监控
+    # 注意在properties中这里不能使用'*'，否则无法访问，yml中使用'*'
+    management.endpoints.web.exposure.include=*
+    management.endpoint.health.show-details=always
+    ```
+3. 启动服务查看路由规则
+```txt
+    http://localhost:8080/actuator/gateway/routes
 ```
+#### 服务发现的路由规则
+1. 添加依赖
+    ```xml
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+    ```
+2. 添加配置
+    ```properties
+    # 服务发现配置
+    # 是否与服务发现组件结合，通过serviceId转发到具体的服务实例
+    spring.cloud.gateway.discovery.locator.enabled=true
+    # 服务名通过小写访问（默认大写）
+    spring.cloud.gateway.discovery.locator.lower-case-service-id=true
+    # 注册中心地址
+    eureka.client.service-url.defaultZone=http://localhost:8686/eureka
+    # 路由规则3
+    spring.cloud.gateway.routes[2].id=client-a
+    spring.cloud.gateway.routes[2].uri=lb://client-a
+    spring.cloud.gateway.routes[2].predicates[0]=Path=/client-a/**
+    spring.cloud.gateway.routes[2].filters[0]=RewritePath=/client-a/(?<segment>.*),/$\\{segment}
+    ```
+
