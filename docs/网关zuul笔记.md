@@ -67,3 +67,17 @@
         }
     }
     ```
+5. 执行流程
+```txt
+//tips1: ServletWrappingController继承ServletWrappingController类
+5.1 SimpleControllerHandlerAdapter.handle() --> ZuulController.handleRequest() --> 
+    ServletWrappingController.handleRequestInternal() --> ZuulServlet.service() --> preRoute -->route() --> postRoute()
+
+5.2 preRoute --> ZuulRunner.preRoute() --> FilterProcessor.preRoute() --> runFilters("pre") 
+    5.2.1 FilterProcessor.runFilters --> FilterLoader.getInstance().getFiltersByType(sType) --> FilterProcessor.processZuulFilter
+
+5.4 postRoute --> SendResponseFilter
+
+
+FormBodyWrapperFilter 注意看一下
+```

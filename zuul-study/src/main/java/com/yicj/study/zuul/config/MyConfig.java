@@ -4,7 +4,6 @@ import com.yicj.study.zuul.filter.FirstPreFilter;
 import com.yicj.study.zuul.filter.HelloFilter;
 import com.yicj.study.zuul.filter.PostFilter;
 import com.yicj.study.zuul.filter.SecondPreFilter;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -15,17 +14,17 @@ public class MyConfig {
         return new HelloFilter() ;
     }
 
-    @Bean
+    //@Bean
     public FirstPreFilter firstPreFilter(){
         return new FirstPreFilter() ;
     }
 
-    @Bean
+    //@Bean
     public SecondPreFilter secondPreFilter(){
         return new SecondPreFilter() ;
     }
 
-    @Bean
+    //@Bean
     public PostFilter postFilter(){
         return new PostFilter() ;
     }
