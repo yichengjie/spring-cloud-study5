@@ -17,10 +17,4 @@ public class HelloController {
     public String xxx(){
         return "hello xxx" ;
     }
-
-    @PostMapping("/submitForm")
-    public UserInfoVo submitForm(UserInfoVo userInfoVo){
-        userInfoVo.setUsername(userInfoVo.getUsername() +" : OK");
-        return userInfoVo ;
-    }
 }
