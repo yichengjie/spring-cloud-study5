@@ -99,7 +99,127 @@
     ribbon.http.client.enabled=false
     ribbon.okhttp.enabled=true
     ```
+#### 整合oauth2 zuul 网关修改
+1. 添加依赖
+    ```xml
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-security</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-oauth2</artifactId>
+    </dependency>
+    ```  
+2. 添加注解@EnableOAuth2Sso
+    ```properties
+    启动类上添加注解@EnableOAuth2Sso
+    ```
+3. 添加配置
+    ```properties
+    # 令牌端点
+    security.oauth2.client.access-token-uri=http://localhost:7777/uua/oauth/token 
+    # 授权端点
+    security.oauth2.client.user-authorization-uri=http://localhost:7777/uua/oauth/authorize
+    # 客户端id
+    security.oauth2.client.client-id=zuul_server
+    security.oauth2.client.client-secret=secret
+    # 使用对称加密方式，默认使用HS256
+    security.oauth2.resource.jwt.key-value=springcloud123
+    ```  
+4. 添加security配置
+    ```java
+    @Configuration
+    public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http.authorizeRequests()
+                .antMatchers("/login","client/**").permitAll()
+                .anyRequest().authenticated().and()
+                .csrf().disable() ;
+        }
+    }
+    ```
+#### 整合oauth2 添加auth server
+1. 添加依赖
+    ```xml
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-oauth2</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+    ```
+2. 启动类编写
+    ```java
+    @EnableDiscoveryClient
+    @SpringBootApplication
+    public class AuthServerApplication {
     
+        public static void main(String[] args) {
+            SpringApplication.run(AuthServerApplication.class, args) ;
+        }
+    }
+    ```
+3. Security相关配置编写
+    ```java
+    @Configuration
+    public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+        @Bean
+        @Override
+        public AuthenticationManager authenticationManagerBean() throws Exception {
+            return super.authenticationManagerBean();
+        }
+        @Override
+        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+            auth.inMemoryAuthentication()
+                    .withUser("guest").password("guest").authorities("WRIGHT_READ").and()
+                    .withUser("admin").password("admin").authorities("wright_read","wright_write") ;
+        }
+        @Bean
+        public static PasswordEncoder passwordEncoder(){
+            return NoOpPasswordEncoder.getInstance() ;
+        }
+    }
+    ```
+4. 认证服务器相关配置编写
+    ```java
+    @Configuration
+    @EnableAuthorizationServer
+    public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
+        @Autowired
+        private AuthenticationManager authenticationManager ;
+        @Override
+        public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+            clients.inMemory()
+                    .withClient("zuul_server")
+                    .secret("secret")
+                    .scopes("WRIGHT","read")
+                    .autoApprove(true)
+                    .authorities("WRIGHT_READ","WRIGHT_WRITE")
+                    .authorizedGrantTypes("implicit","refresh_token","password","authorization_code") ;
+        }
+        @Override
+        public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+            endpoints.tokenStore(jwtTokenStore())
+                .tokenEnhancer(jwtAccessTokenConverter())
+                .authenticationManager(authenticationManager) ;
+        }
+        @Bean
+        public TokenStore jwtTokenStore(){
+            return new JwtTokenStore(jwtAccessTokenConverter()) ;
+        }
+        @Bean
+        public JwtAccessTokenConverter jwtAccessTokenConverter(){
+            JwtAccessTokenConverter converter = new JwtAccessTokenConverter() ;
+            converter.setSigningKey("springcloud123");
+            return converter ;
+        }
+    }
+    ```
+5. 
 #### 其他
 1. 执行流程
 ```txt
