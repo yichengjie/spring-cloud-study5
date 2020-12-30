@@ -19,13 +19,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
             .antMatchers("/**").authenticated()
-            .antMatchers(HttpMethod.GET,"/test").hasAuthority("WRIGHT_READ").and()
+            .antMatchers(HttpMethod.GET,"/test")
+            .hasAuthority("WRIGTH_READ").and()
             .csrf().disable() ;
     }
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-        resources.resourceId("WRIGHT").tokenStore(jwtTokenStore()) ;
+        resources.resourceId("WRIGTH").tokenStore(jwtTokenStore()) ;
     }
 
     @Bean
