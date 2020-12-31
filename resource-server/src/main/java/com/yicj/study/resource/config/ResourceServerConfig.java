@@ -19,9 +19,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
             .antMatchers("/**").authenticated()
-            .antMatchers(HttpMethod.GET,"/test")
-            .hasAuthority("WRIGTH_READ").and()
-            .csrf().disable() ;
+            //.antMatchers(HttpMethod.GET,"/test")
+            //.hasAuthority("READ")
+            .and().csrf().disable() ;
     }
 
     @Override
