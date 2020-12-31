@@ -140,86 +140,8 @@
         }
     }
     ```
-#### 整合oauth2 添加auth server
-1. 添加依赖
-    ```xml
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-oauth2</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
-    ```
-2. 启动类编写
-    ```java
-    @EnableDiscoveryClient
-    @SpringBootApplication
-    public class AuthServerApplication {
-    
-        public static void main(String[] args) {
-            SpringApplication.run(AuthServerApplication.class, args) ;
-        }
-    }
-    ```
-3. Security相关配置编写
-    ```java
-    @Configuration
-    public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-        @Bean
-        @Override
-        public AuthenticationManager authenticationManagerBean() throws Exception {
-            return super.authenticationManagerBean();
-        }
-        @Override
-        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.inMemoryAuthentication()
-                    .withUser("guest").password("guest").authorities("WRIGHT_READ").and()
-                    .withUser("admin").password("admin").authorities("wright_read","wright_write") ;
-        }
-        @Bean
-        public static PasswordEncoder passwordEncoder(){
-            return NoOpPasswordEncoder.getInstance() ;
-        }
-    }
-    ```
-4. 认证服务器相关配置编写
-    ```java
-    @Configuration
-    @EnableAuthorizationServer
-    public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
-        @Autowired
-        private AuthenticationManager authenticationManager ;
-        @Override
-        public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-            clients.inMemory()
-                    .withClient("zuul_server")
-                    .secret("secret")
-                    .scopes("WRIGHT","read")
-                    .autoApprove(true)
-                    .authorities("WRIGHT_READ","WRIGHT_WRITE")
-                    .authorizedGrantTypes("implicit","refresh_token","password","authorization_code") ;
-        }
-        @Override
-        public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-            endpoints.tokenStore(jwtTokenStore())
-                .tokenEnhancer(jwtAccessTokenConverter())
-                .authenticationManager(authenticationManager) ;
-        }
-        @Bean
-        public TokenStore jwtTokenStore(){
-            return new JwtTokenStore(jwtAccessTokenConverter()) ;
-        }
-        @Bean
-        public JwtAccessTokenConverter jwtAccessTokenConverter(){
-            JwtAccessTokenConverter converter = new JwtAccessTokenConverter() ;
-            converter.setSigningKey("springcloud123");
-            return converter ;
-        }
-    }
-    ```
-5. 
+
+
 #### 其他
 1. 执行流程
 ```txt

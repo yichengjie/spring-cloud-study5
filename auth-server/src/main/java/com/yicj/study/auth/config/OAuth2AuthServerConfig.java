@@ -25,8 +25,7 @@ public class OAuth2AuthServerConfig extends AuthorizationServerConfigurerAdapter
                 .withClient("zuul_server")
                 .secret("secret")
                 .scopes("read","write").autoApprove(true)
-                //.authorities(
-                // "WRIGTH_READ","WRIGTH_WRITE")
+                .resourceIds("RESOURCE_SERVER")
                 .authorizedGrantTypes("implicit","refresh_token","password","authorization_code") ;
     }
 

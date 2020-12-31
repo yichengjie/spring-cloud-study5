@@ -7,9 +7,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 
-@EnableWebSecurity
-@EnableOAuth2Sso
+//@EnableWebSecurity 这里可以不用添加
 @Configuration
+@EnableOAuth2Sso
 public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {

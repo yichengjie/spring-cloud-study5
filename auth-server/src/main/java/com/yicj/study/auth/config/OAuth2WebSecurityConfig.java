@@ -22,8 +22,8 @@ public class OAuth2WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("guest").password("guest").authorities("ROLE_READ").and()
-                .withUser("admin").password("admin").authorities("ROLE_READ","ROLE_WRITE") ;
+                .withUser("guest").password("guest").authorities("ROLE_GUEST").and()
+                .withUser("admin").password("admin").authorities("ROLE_GUEST","ROLE_ADMIN") ;
     }
 
     @Bean
