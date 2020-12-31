@@ -203,7 +203,7 @@
     # 使用对称加密方式，默认使用HS256
     security.oauth2.resource.jwt.key-value=springcloud123
     # ZuulProperties中sensitiveHeaders默认值"Cookie", "Set-Cookie", "Authorization"
-    # 这里不手动设置的话zuul访问resource将不带Authorization
+    # 这里需动设置敏感头字段，zuul默认header不带Authorization
     zuul.sensitive-headers=Cookie,Set-Cookie
     # 资源服务器路由配置
     zuul.routes.resource-server.path=/resource/**
