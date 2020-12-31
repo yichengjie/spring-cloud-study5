@@ -99,61 +99,16 @@
     ribbon.http.client.enabled=false
     ribbon.okhttp.enabled=true
     ```
-#### 整合oauth2 zuul 网关修改
-1. 添加依赖
-    ```xml
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-security</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-oauth2</artifactId>
-    </dependency>
-    ```  
-2. 添加注解@EnableOAuth2Sso
-    ```properties
-    启动类上添加注解@EnableOAuth2Sso
-    ```
-3. 添加配置
-    ```properties
-    # 令牌端点
-    security.oauth2.client.access-token-uri=http://localhost:7777/uua/oauth/token 
-    # 授权端点
-    security.oauth2.client.user-authorization-uri=http://localhost:7777/uua/oauth/authorize
-    # 客户端id
-    security.oauth2.client.client-id=zuul_server
-    security.oauth2.client.client-secret=secret
-    # 使用对称加密方式，默认使用HS256
-    security.oauth2.resource.jwt.key-value=springcloud123
-    ```  
-4. 添加security配置
-    ```java
-    @Configuration
-    public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests()
-                .antMatchers("/login","client/**").permitAll()
-                .anyRequest().authenticated().and()
-                .csrf().disable() ;
-        }
-    }
-    ```
-
-
 #### 其他
 1. 执行流程
-```txt
-//tips1: ServletWrappingController继承ServletWrappingController类
-5.1 SimpleControllerHandlerAdapter.handle() --> ZuulController.handleRequest() --> 
-    ServletWrappingController.handleRequestInternal() --> ZuulServlet.service() --> preRoute -->route() --> postRoute()
-
-5.2 preRoute --> ZuulRunner.preRoute() --> FilterProcessor.preRoute() --> runFilters("pre") 
-    5.2.1 FilterProcessor.runFilters --> FilterLoader.getInstance().getFiltersByType(sType) --> FilterProcessor.processZuulFilter
-
-5.4 postRoute --> SendResponseFilter
-
-
-FormBodyWrapperFilter 注意看一下
-```
+    ```txt
+    //tips1: ServletWrappingController继承ServletWrappingController类
+    1.1 SimpleControllerHandlerAdapter.handle() --> ZuulController.handleRequest() --> 
+        ServletWrappingController.handleRequestInternal() --> ZuulServlet.service() --> preRoute -->route() --> postRoute()
+    
+    1.2 preRoute --> ZuulRunner.preRoute() --> FilterProcessor.preRoute() --> runFilters("pre") 
+        5.2.1 FilterProcessor.runFilters --> FilterLoader.getInstance().getFiltersByType(sType) --> FilterProcessor.processZuulFilter
+    
+    1.3 postRoute --> SendResponseFilter
+    FormBodyWrapperFilter 注意看一下
+    ```
