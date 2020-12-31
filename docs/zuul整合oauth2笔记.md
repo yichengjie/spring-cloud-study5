@@ -174,6 +174,11 @@
         }
     }
     ```
+5. 验证资源服务器,获取资源
+    ```txt
+    5.1 访问 http://localhost:8082/test
+    5.2 header添加Authorization bearer token-value
+    ```
 #### Zuul网关整合Oauth2
 1. 添加依赖
     ```xml
