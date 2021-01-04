@@ -1,5 +1,6 @@
 package com.yicj.study.reactor;
 
+import com.yicj.study.reactor.model.Apple;
 import org.junit.Before;
 import org.junit.Test;
 import reactor.core.publisher.Flux;
@@ -7,6 +8,7 @@ import reactor.test.StepVerifier;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class HelloWorldTest {
 
@@ -25,7 +27,6 @@ public class HelloWorldTest {
         Consumer<Integer> consumer = a ->{} ;
     }
 
-
     @Test
     public void test2(){
         StepVerifier.create(fruitFlux)
@@ -36,5 +37,12 @@ public class HelloWorldTest {
                 .expectNext("Strawberry")
                 .verifyComplete()
         ;
+    }
+
+    @Test
+    public void test3(){
+        //Apple apple = Apple::new ;
+        Supplier<Apple> c1 = Apple::new ;
+        Supplier<Apple> c2 = () -> new Apple() ;
     }
 }
