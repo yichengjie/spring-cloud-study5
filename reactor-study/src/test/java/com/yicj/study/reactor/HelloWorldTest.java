@@ -22,7 +22,6 @@ public class HelloWorldTest {
     @Test
     public void test1(){
         fruitFlux.subscribe(f -> System.out.println("Here's some fruit: " + f)) ;
-
         Function<Integer,String> fun = a -> a + "" ;
         Consumer<Integer> consumer = a ->{} ;
     }
