@@ -33,6 +33,4 @@ public class HelloHandler {
                         .map(it -> new SimpleDateFormat("HH:mm:ss").format(new Date())), String.class);
     }
 
-    public
-
 }
