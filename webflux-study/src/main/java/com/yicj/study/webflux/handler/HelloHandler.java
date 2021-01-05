@@ -12,8 +12,6 @@ import reactor.core.publisher.Mono;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-import static org.springframework.web.reactive.function.server.ServerResponse.ok;
-
 
 @Component
 public class HelloHandler {
@@ -22,17 +20,17 @@ public class HelloHandler {
     private UserService userService ;
 
     public Mono<ServerResponse> hello(ServerRequest request){
-       return ok().contentType(MediaType.TEXT_PLAIN)
+       return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN)
                .body(Mono.just("hello"), String.class);
     }
 
     public Mono<ServerResponse> world(ServerRequest request){
-        return ok().contentType(MediaType.TEXT_PLAIN)
+        return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN)
                 .body(Mono.just("world"), String.class) ;
     }
 
     public Mono<ServerResponse> times(ServerRequest request){
-        return ok().contentType(MediaType.TEXT_EVENT_STREAM)
+        return ServerResponse.ok().contentType(MediaType.TEXT_EVENT_STREAM)
                 .body(Flux.interval(Duration.ofSeconds(1))
                         .map(it -> new SimpleDateFormat("HH:mm:ss").format(new Date())), String.class);
     }
@@ -40,7 +38,7 @@ public class HelloHandler {
     public Mono<ServerResponse> findById(ServerRequest request){
         String idStr = request.pathVariable("id");
         Integer id = Integer.parseInt(idStr) ;
-        return ok().contentType(MediaType.APPLICATION_JSON)
+        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(userService.findById(id)), User.class) ;
     }
 

@@ -4,10 +4,8 @@ import com.yicj.study.reactor.model.Dish;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class ReduceTest {
     private List<Integer> numberList ;
@@ -52,7 +50,9 @@ public class ReduceTest {
 
     @Test
     public void countMenu(){
-        Optional<Integer> reduce = menu.stream().map(item -> 1).reduce((a, b) -> a + b);
+        Optional<Integer> reduce = menu.stream()
+                .map(item -> 1)
+                .reduce((a, b) -> a + b);
         System.out.println(reduce.get());
     }
 
@@ -64,6 +64,35 @@ public class ReduceTest {
 
     @Test
     public void toMap(){
+//        menu.stream()
+//            .map(Dish::getCalories)
+//            .sum() ;
+        menu.stream()
+            .mapToInt(Dish::getCalories)
+            .sum() ;
+    }
+
+    @Test
+    public void toMap2(){
+        Map<String, Dish> reduce = menu.stream().reduce(new HashMap<>(), (Map<String, Dish> map, Dish d) -> {
+            map.put(d.getName(), d);
+            return map;
+        }, (Map<String, Dish> m1, Map<String, Dish> m2) -> {
+            m1.putAll(m2);
+            return m1;
+        });
+        System.out.println(reduce.size());
+    }
+
+    @Test
+    public void test2(){
+        numberList.stream().reduce(new ArrayList<>(), (List<Integer> li, Integer e)->{
+            li.add(e) ;
+            return li ;
+        },(List<Integer> l1, List<Integer> l2) ->{
+            l1.addAll(l2) ;
+            return l1 ;
+        }) ;
 
     }
 }
