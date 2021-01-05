@@ -122,6 +122,6 @@
     }
     ```
 2. Gateway Filter与Global Filter的区别
-> 从作用范围来看，Global Filter会被应用到所有的路由上，而Gateway Filter仅应用到单个路由或则一个分组路由上
+    > 从作用范围来看，Global Filter会被应用到所有的路由上，而Gateway Filter仅应用到单个路由或则一个分组路由上
 #### 权重路由
 
