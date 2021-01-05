@@ -23,8 +23,12 @@
        obtainApplicationContext().getAutowireCapableBeanFactory().autowireBean(container);
        return CollectionUtils.isEmpty(container.routerFunctions) ? Collections.emptyList() :
        				container.routerFunctions;
+       				
+       // 自定义的routeFunction为SameComposedRouterFunction
    }   
-   2.2 将所有RouterFunction组装为DifferentComposedRouterFunction并一个接一个连起来
+   2.2 其中obtainApplicationContext().getAutowireCapableBeanFactory().autowireBean(container);
+       触发自定RouterConfig初始化，并组装为SameComposedRouterFunction实例
+   2.3 将RouterFunction连接成一个SameComposedRouterFunction链（一个接一个）
 }
 #### 接收请求并将请求转发到DispatcherHandler
 1. ChannelOperations.applyHandler 
@@ -39,10 +43,18 @@
    
    => DispatcherHandler.handle.(exchange)
 #### DispatcherHandler处理请求
-1. 遍历handlerMappings并调用handle方法{
-    1.1 RouterFunctionMapping.handle => getHandlerInternal(){
+1. 调用HandlerMappings获取Handler
+    => invokeHandler(exchange, handler) 
+    => handleResult(exchange, result)
+2. invokeHandler(exchange, handler){
+    2.1 调用HandlerAdapter.handle(exchange, handler)
+    2.2 RouterFunctionMapping.handle => getHandlerInternal(){
         ServerRequest request = ServerRequest.create(exchange, this.messageReaders);
-    }，
-    1.2 调用routerFunction:SameComposedRouterFunction.route(request);
+    }
+    2.3 调用routerFunction:SameComposedRouterFunction.route(request);
+}
+3. handleResult(exchange, result){
+    3.1 遍历系统中所有HandlerResultHandler并调用supports(result)，刷选出合适的HandlerResultHandler
+    3.1 执行HandlerResultHandler.handleResult(exchange, result)将结果输出response
 }
     

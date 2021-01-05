@@ -18,10 +18,13 @@ public class RouterConfig {
 
     @Bean
     public RouterFunction<ServerResponse> helloRouter(){
-        return route(GET("/hello"),helloHandler::hello)
-                .andRoute(GET("/world"),helloHandler::world)
+        RouterFunction<ServerResponse> routerFunction =
+                route(GET("/hello"), helloHandler::hello)
+                .andRoute(GET("/world"), helloHandler::world)
                 .andRoute(GET("/times"), helloHandler::times)
-                .andRoute(GET("/findById/{id}"),helloHandler::findById);
+                .andRoute(GET("/findById/{id}"), helloHandler::findById);
+
+        return routerFunction ;
     }
 
 }
