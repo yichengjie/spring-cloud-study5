@@ -123,5 +123,50 @@
     ```
 2. Gateway Filter与Global Filter的区别
     > 从作用范围来看，Global Filter会被应用到所有的路由上，而Gateway Filter仅应用到单个路由或则一个分组路由上
-#### 权重路由
+#### 自定义predicate工厂
+1. 添加predicate工厂配置,这里这里TimeBetween为自定义predicate工厂的类前缀
+    ```properties
+    spring.cloud.gateway.routes[2].predicates[1]=TimeBetween=上午9:00, 下午5:00
+    ```
+2. 获取时间格式可以通过代码
+    ```text
+    DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+    LocalTime now = LocalTime.now();
+    System.out.println(formatter.format(now));
+    // 下午4:05
+    ```
+3. 编写TimeBetween后面的值对应的属性类
+    ```java
+    @Data
+    public class TimeBetweenConfig {
+        private LocalTime start ;
+        private LocalTime end ;
+    }
+    ```
+3. 编写predicate工厂实现类,注意这里必须以RoutePredicateFactory为类后缀名
+    ```java
+    // 需要实现shortcutFieldOrder与apply两个方法
+    @Component
+    public class TimeBetweenRoutePredicateFactory extends AbstractRoutePredicateFactory<TimeBetweenConfig> {
+        public TimeBetweenRoutePredicateFactory() {
+            super(TimeBetweenConfig.class);
+        }
+        @Override
+        public List<String> shortcutFieldOrder() {
+            //TimeBetween=9:00, 17:00
+            //配置TimeBetweenConfig与predicate工厂配置对应关系
+            // 对应的start属性映射 9:00 ,   end属性映射17:00
+            return Arrays.asList("start","end");
+        }
+        @Override
+        public Predicate<ServerWebExchange> apply(TimeBetweenConfig config) {
+            LocalTime start = config.getStart();
+            LocalTime end = config.getEnd();
+            return exchange -> {
+                LocalTime now = LocalTime.now();
+                return now.isAfter(start) && now.isBefore(end);
+            };
+        }
+    }
+    ```
 
