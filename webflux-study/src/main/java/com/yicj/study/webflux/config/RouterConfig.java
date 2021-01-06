@@ -23,7 +23,6 @@ public class RouterConfig {
                 .andRoute(GET("/world"), helloHandler::world)
                 .andRoute(GET("/times"), helloHandler::times)
                 .andRoute(GET("/findById/{id}"), helloHandler::findById);
-
         return routerFunction ;
     }
 
