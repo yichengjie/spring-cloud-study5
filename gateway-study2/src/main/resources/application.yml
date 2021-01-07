@@ -8,7 +8,7 @@ spring:
           uri: http://localhost:8081
           predicates:
             - Path=/client-a/**
-            - After=2021-01-09T13:55:42.077+08:00[Asia/Shanghai]
+            - TimeBetween=上午9:00, 下午2:00
           filters:
             - StripPrefix=1
   application:

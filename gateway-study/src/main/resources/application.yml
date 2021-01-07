@@ -11,13 +11,15 @@ spring:
           lower-case-service-id: true
       routes:
         - id: client-a
-          uri: lb://client-a
+          uri: http://localhost:8081
           predicates:
             - Path=/client-a/**
             - TimeBetween=上午9:00, 下午2:00
+          filters:
+            - StripPrefix=1
 logging:
   level:
-    reactor.ipc.netty: true
+    reactor.netty: debug
 eureka:
   client:
     service-url:
