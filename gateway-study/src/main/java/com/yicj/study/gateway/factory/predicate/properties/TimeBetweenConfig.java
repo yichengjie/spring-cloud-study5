@@ -1,4 +1,4 @@
-package com.yicj.study.gateway.predicate.properties;
+package com.yicj.study.gateway.factory.predicate.properties;
 
 import lombok.Data;
 

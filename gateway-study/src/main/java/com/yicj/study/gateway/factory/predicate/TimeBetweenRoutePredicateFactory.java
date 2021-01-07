@@ -1,6 +1,6 @@
-package com.yicj.study.gateway.predicate;
+package com.yicj.study.gateway.factory.predicate;
 
-import com.yicj.study.gateway.predicate.properties.TimeBetweenConfig;
+import com.yicj.study.gateway.factory.predicate.properties.TimeBetweenConfig;
 import org.springframework.cloud.gateway.handler.predicate.AbstractRoutePredicateFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
