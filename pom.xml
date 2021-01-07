@@ -16,6 +16,7 @@
         <module>auth-server</module>
         <module>resource-server</module>
         <module>webflux-study</module>
+        <module>gateway-study2</module>
     </modules>
     <packaging>pom</packaging>
 

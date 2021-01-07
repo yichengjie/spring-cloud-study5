@@ -17,4 +17,10 @@ public class HelloController {
     public String xxx(){
         return "hello xxx" ;
     }
+
+    @GetMapping("/")
+    public String index(){
+
+        return "index" ;
+    }
 }

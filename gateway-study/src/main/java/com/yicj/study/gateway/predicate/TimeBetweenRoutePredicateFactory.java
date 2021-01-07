@@ -31,8 +31,7 @@ public class TimeBetweenRoutePredicateFactory extends AbstractRoutePredicateFact
         LocalTime end = config.getEnd();
         return exchange -> {
             LocalTime now = LocalTime.now();
-            boolean flag = now.isAfter(start) && now.isBefore(end);
-            //return flag ;
+            //return now.isAfter(start) && now.isBefore(end);
             return false ;
         };
     }
