@@ -18,3 +18,7 @@
     7.2 参考示例：AddRequestHeaderGatewayFilterFactory
     7.3 配置形式：filters[n]=AddRequestHeader=S-Header,Bar
     ```
+8. 内置全局过滤器: https://www.imooc.com/article/290821(重点)
+9. 监控端点：https://www.imooc.com/article/290822
+10. 排查总结：https://www.imooc.com/article/290824
+11. 限流：https://www.imooc.com/article/290828
