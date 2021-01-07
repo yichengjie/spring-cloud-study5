@@ -7,9 +7,11 @@ spring:
     gateway:
       discovery:
         locator:
-          lower-case-service-id: true
+          # 注意如果locator.enabled为true，且locator.lower-case-service-id为true时，路由规则配置将不生效
+          lower-case-service-id: false
+          enabled: true
       routes:
-        - id: client-a
+        - id: time_between
           uri: lb://client-a
           predicates:
             - Path=/client-a/**

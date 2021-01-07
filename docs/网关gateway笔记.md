@@ -51,8 +51,8 @@
     ```properties
     # 服务发现配置
     # 是否与服务发现组件结合，通过serviceId转发到具体的服务实例
-    # 注意这个不能配置为true，否则下面的routes配置无效
-    #spring.cloud.gateway.discovery.locator.enabled=true
+    # 注意如果locator.enabled为true，且locator.lower-case-service-id为true时，路由规则配置将不生效
+    spring.cloud.gateway.discovery.locator.enabled=true
     # 服务名通过小写访问（默认大写）
     #spring.cloud.gateway.discovery.locator.lower-case-service-id=true
     # 注册中心地址
@@ -127,8 +127,7 @@
 #### 自定义predicate工厂
 1. 添加predicate工厂配置,这里这里TimeBetween为自定义predicate工厂的类前缀
     ```properties
-    # 注意这里的路由规则与spring.cloud.gateway.discovery.locator.enabled=true有冲突
-    # 如果配置了spring.cloud.gateway.discovery.locator.enabled=true则下面的路由配置将不生效
+    # 注意如果locator.enabled为true，且locator.lower-case-service-id为true时，路由规则配置将不生效
     spring.cloud.gateway.routes[2].predicates[1]=TimeBetween=上午9:00, 下午5:00
     ```
 2. 获取时间格式可以通过代码
