@@ -16,6 +16,7 @@ public class TimeBetweenRoutePredicateFactory extends AbstractRoutePredicateFact
         super(TimeBetweenConfig.class);
     }
 
+    // 配置配置类和配置文件的映射关系的
     @Override
     public List<String> shortcutFieldOrder() {
         //TimeBetween=9:00, 17:00
