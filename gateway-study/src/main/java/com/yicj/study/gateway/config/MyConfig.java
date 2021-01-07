@@ -1,11 +1,16 @@
 package com.yicj.study.gateway.config;
 
 import com.yicj.study.gateway.filter.CustomGatewayFilter;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+import reactor.core.publisher.Mono;
 
+@Slf4j
 @Configuration
 public class MyConfig {
 
@@ -33,5 +38,44 @@ public class MyConfig {
                     .id("customer_filter_router2")
             )
             .build();
+    }
+
+
+    /**
+     * lambda return之前时pre 过滤器
+     * return 之后的then中式post过滤器
+     * @return
+     */
+    @Bean
+    @Order(-1)
+    public GlobalFilter a() {
+        return (exchange, chain) -> {
+            log.info("first pre filter");
+            return chain.filter(exchange).then(Mono.fromRunnable(() -> {
+                log.info("third post filter");
+            }));
+        };
+    }
+
+    @Bean
+    @Order(0)
+    public GlobalFilter b() {
+        return (exchange, chain) -> {
+            log.info("second pre filter");
+            return chain.filter(exchange).then(Mono.fromRunnable(() -> {
+                log.info("second post filter");
+            }));
+        };
+    }
+
+    @Bean
+    @Order(1)
+    public GlobalFilter c() {
+        return (exchange, chain) -> {
+            log.info("third pre filter");
+            return chain.filter(exchange).then(Mono.fromRunnable(() -> {
+                log.info("first post filter");
+            }));
+        };
     }
 }
