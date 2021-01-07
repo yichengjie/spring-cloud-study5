@@ -7,11 +7,11 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true
+          #enabled: true
           lower-case-service-id: true
       routes:
         - id: client-a
-          uri: http://localhost:8081
+          uri: lb://client-a
           predicates:
             - Path=/client-a/**
             - TimeBetween=上午9:00, 下午2:00
