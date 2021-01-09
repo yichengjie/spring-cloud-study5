@@ -15,15 +15,21 @@ spring:
           uri: lb://client-a
           predicates:
             - Path=/client-a/**
-            - TimeBetween=上午9:00, 下午2:00
+            - TimeBetween=上午00:00, 下午11:59
+          filters:
+            - StripPrefix=1
+        - id: jd
+          uri: http://www.jd.com
+          predicates:
+            - Path=/jd/**
           filters:
             - StripPrefix=1
 logging:
   level:
     reactor.netty: debug
-    org.springframework.cloud.gateway: trace
-    org.springframework.http.server.reactive: debug
-    org.springframework.web.reactive: debug
+#    org.springframework.cloud.gateway: trace
+#    org.springframework.http.server.reactive: debug
+#    org.springframework.web.reactive: debug
 eureka:
   client:
     service-url:
