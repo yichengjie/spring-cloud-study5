@@ -18,6 +18,11 @@ spring:
             - TimeBetween=上午00:00, 下午11:59
           filters:
             - StripPrefix=1
+            - AddRequestParameter=example, ValueB
+        - id: query_param
+          uri: lb://client-a
+          predicates:
+            - Query=foo, bar
         - id: jd
           uri: http://www.jd.com
           predicates:
