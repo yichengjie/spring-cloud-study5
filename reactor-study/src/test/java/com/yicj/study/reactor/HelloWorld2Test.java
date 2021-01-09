@@ -10,6 +10,7 @@ import reactor.core.scheduler.Schedulers;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 public class HelloWorld2Test {
 
@@ -54,6 +55,7 @@ public class HelloWorld2Test {
 
     @Test
     public void testSubscribeOn() throws InterruptedException {
+        CountDownLatch latch = new CountDownLatch(6) ;
         Flux<Integer> flux = Flux.just(1, 2, 3, 4, 5, 6);
         flux.map(i -> {
             System.out.println(Thread.currentThread().getName() + "-map1");
@@ -62,12 +64,12 @@ public class HelloWorld2Test {
         .map(i->{
             System.out.println(Thread.currentThread().getName() +"-map2");
             return i /3 ;
-        }).subscribeOn(Schedulers.parallel()).subscribe(i ->{
+        }).subscribeOn(Schedulers.parallel())
+        .subscribe(i ->{
             System.out.println(Thread.currentThread().getName() +"- ["+i+"]" );
+            latch.countDown();
         });
-        while (true){
-
-        }
+        latch.await();
     }
 
 
