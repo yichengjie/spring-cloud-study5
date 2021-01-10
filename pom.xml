@@ -17,6 +17,7 @@
         <module>resource-server</module>
         <module>webflux-study</module>
         <module>gateway-study2</module>
+        <module>open-feign-study</module>
     </modules>
     <packaging>pom</packaging>
 
