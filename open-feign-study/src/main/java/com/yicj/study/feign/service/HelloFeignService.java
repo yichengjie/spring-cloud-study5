@@ -11,5 +11,4 @@ public interface HelloFeignService {
 
     @RequestMapping(value = "/search/repositories", method = RequestMethod.GET)
     String searchRepo(@RequestParam("q") String queryStr) ;
-
 }

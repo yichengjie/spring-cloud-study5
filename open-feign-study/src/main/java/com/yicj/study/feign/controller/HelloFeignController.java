@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HelloFeignController {
-
     @Autowired
     private HelloFeignService helloFeignService ;
 
@@ -16,6 +15,4 @@ public class HelloFeignController {
     public String searchGithubRepoByStr(@RequestParam("str") String queryStr){
         return helloFeignService.searchRepo(queryStr);
     }
-
-
 }
