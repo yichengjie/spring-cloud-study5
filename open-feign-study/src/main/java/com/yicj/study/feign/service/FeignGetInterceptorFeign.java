@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient(name = "demo-goods", url = "http://localhost:8081")
 public interface FeignGetInterceptorFeign {
-
     @RequestMapping(value = "/feignGet/addUser",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_UTF8_VALUE
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
     ResponseEntity<byte[]> addUser(User user) ;
 
+
     @RequestMapping(value = "/feignGet/updateUser",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_UTF8_VALUE
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
     ResponseEntity<byte[]> updateUser(@RequestBody User user) ;
 }
