@@ -18,6 +18,7 @@
         <module>webflux-study</module>
         <module>gateway-study2</module>
         <module>open-feign-study</module>
+        <module>webmvc-api-service</module>
     </modules>
     <packaging>pom</packaging>
 
