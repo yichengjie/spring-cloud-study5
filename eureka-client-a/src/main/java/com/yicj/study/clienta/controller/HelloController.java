@@ -1,8 +1,6 @@
 package com.yicj.study.clienta.controller;
 
-import com.yicj.study.clienta.model.vo.UserInfoVo;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -16,6 +14,12 @@ public class HelloController {
     @GetMapping("/xxx")
     public String xxx(){
         return "hello xxx" ;
+    }
+
+    @GetMapping("/hello2")
+    public String hello2(String name){
+
+        return "hello " + name ;
     }
 
     @GetMapping("/")
