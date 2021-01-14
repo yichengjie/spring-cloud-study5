@@ -1,13 +1,14 @@
 package com.yicj.study.mvc.controller;
 
 import com.yicj.study.mvc.model.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 
+@Slf4j
 @RestController
 @RequestMapping("/feignGet")
 public class FeignGetInterceptorController {
@@ -17,10 +18,20 @@ public class FeignGetInterceptorController {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    private User addUser(User user) {
+    public User addUser(User user, HttpServletRequest request) {
+        this.printHeaders(request);
         user.setUsername(user.getUsername() + "1");
         user.setPassword("password " + 1);
         return user;
+    }
+
+
+    private void printHeaders(HttpServletRequest request){
+        Enumeration<String> names = request.getHeaderNames();
+        while (names.hasMoreElements()){
+            String name = names.nextElement();
+            log.info("====> {} : {}",name, request.getHeader(name));
+        }
     }
 
 
@@ -29,10 +40,10 @@ public class FeignGetInterceptorController {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    User updateUser(@RequestBody User user) {
+    public User updateUser(@RequestBody User user, HttpServletRequest request) {
+        this.printHeaders(request);
         user.setUsername(user.getUsername() + "1");
         user.setPassword(user.getPassword() + "1");
         return user;
     }
-
 }

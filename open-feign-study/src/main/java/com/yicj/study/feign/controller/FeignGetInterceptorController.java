@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/feignGet")
@@ -19,11 +21,26 @@ public class FeignGetInterceptorController {
 
     @RequestMapping(
         value = "/addUser",
-        method = RequestMethod.GET,
+        method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    public ResponseEntity<byte[]> addUser(User user){
-        return feignGetInterceptorFeign.addUser(user) ;
+    public ResponseEntity<byte[]> addUser(@RequestBody User user){
+        Map<String,Object> queryParams = new HashMap<>() ;
+        queryParams.put("id", user.getId()) ;
+        queryParams.put("username", user.getUsername()) ;
+        queryParams.put("password", user.getPassword()) ;
+        queryParams.put("roles", user.getRoles()) ;
+        return feignGetInterceptorFeign.addUser(queryParams) ;
+    }
+
+
+    @RequestMapping(
+            value = "/addUser2",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE
+    )
+    public ResponseEntity<byte[]> addUser2(@RequestBody User user){
+        return feignGetInterceptorFeign.addUser2(user) ;
     }
 
     @RequestMapping(
