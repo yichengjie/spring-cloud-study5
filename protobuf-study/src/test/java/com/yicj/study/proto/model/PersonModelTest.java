@@ -1,12 +1,12 @@
 package com.yicj.study.proto.model;
 
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.yicj.study.proto.common.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 @Slf4j
 public class PersonModelTest {
-
     @Test
     public void hello() throws InvalidProtocolBufferException {
         PersonModel.Person forezp = PersonModel.Person.newBuilder()
@@ -17,8 +17,9 @@ public class PersonModelTest {
         for (byte b : forezp.toByteArray()){
             System.out.print(b);
         }
-
-        System.out.println("====================> " + forezp.toByteString());
+        String s = CommonUtil.base64Encode(forezp.toByteArray());
+        System.out.println();
+        System.out.println("====================> " + s);
         System.out.println();
         log.info("\n" + "bytes长度" + forezp.toByteString().size());
         log.info("========forezp Byte 结束==========");
@@ -26,9 +27,5 @@ public class PersonModelTest {
         PersonModel.Person forezpCopy = PersonModel.Person.parseFrom(forezp.toByteArray()) ;
         log.info(forezpCopy.toString());
         log.info("====== forezp 反系列化生成对象结束=======");
-
-
-
     }
-
 }
