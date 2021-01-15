@@ -3,6 +3,7 @@
     <dependency>
         <groupId>com.google.protobuf</groupId>
         <artifactId>protobuf-java</artifactId>
+        <version>3.12.4</version>
     </dependency>
     ```
 2. maven插件配置（pom.xml）
@@ -12,14 +13,14 @@
             <extension>
                 <groupId>kr.motd.maven</groupId>
                 <artifactId>os-maven-plugin</artifactId>
-                <version>1.5.0.Final</version>
+                <version>1.6.2</version>
             </extension>
         </extensions>
         <plugins>
             <plugin>
                 <groupId>org.xolstice.maven.plugins</groupId>
                 <artifactId>protobuf-maven-plugin</artifactId>
-                <version>0.5.1</version>
+                <version>0.6.1</version>
                 <configuration>
                     <protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>
                     <outputDirectory>${project.build.directory}/generated-sources/protobuf/java</outputDirectory>
