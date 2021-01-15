@@ -20,7 +20,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.11.0)",
     comments = "Source: HiService.proto")
-public final class HelloServiceGrpc {
+public class HelloServiceGrpc {
 
   private HelloServiceGrpc() {}
 
