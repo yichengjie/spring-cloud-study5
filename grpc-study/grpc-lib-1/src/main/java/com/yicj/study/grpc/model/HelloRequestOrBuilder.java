@@ -9,43 +9,34 @@ public interface HelloRequestOrBuilder extends
 
   /**
    * <code>string name = 1;</code>
-   * @return The name.
    */
   java.lang.String getName();
   /**
    * <code>string name = 1;</code>
-   * @return The bytes for name.
    */
   com.google.protobuf.ByteString
       getNameBytes();
 
   /**
    * <code>int32 age = 2;</code>
-   * @return The age.
    */
   int getAge();
 
   /**
    * <code>repeated string hobbies = 3;</code>
-   * @return A list containing the hobbies.
    */
   java.util.List<java.lang.String>
       getHobbiesList();
   /**
    * <code>repeated string hobbies = 3;</code>
-   * @return The count of hobbies.
    */
   int getHobbiesCount();
   /**
    * <code>repeated string hobbies = 3;</code>
-   * @param index The index of the element to return.
-   * @return The hobbies at the given index.
    */
   java.lang.String getHobbies(int index);
   /**
    * <code>repeated string hobbies = 3;</code>
-   * @param index The index of the value to return.
-   * @return The bytes of the hobbies at the given index.
    */
   com.google.protobuf.ByteString
       getHobbiesBytes(int index);

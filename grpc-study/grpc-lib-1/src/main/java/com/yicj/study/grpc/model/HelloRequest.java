@@ -6,7 +6,7 @@ package com.yicj.study.grpc.model;
 /**
  * Protobuf type {@code com.yicj.study.grpc.model.HelloRequest}
  */
-public final class HelloRequest extends
+public  final class HelloRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:com.yicj.study.grpc.model.HelloRequest)
     HelloRequestOrBuilder {
@@ -17,14 +17,8 @@ private static final long serialVersionUID = 0L;
   }
   private HelloRequest() {
     name_ = "";
+    age_ = 0;
     hobbies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-  }
-
-  @java.lang.Override
-  @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
-    return new HelloRequest();
   }
 
   @java.lang.Override
@@ -51,6 +45,13 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
+          default: {
+            if (!parseUnknownFieldProto3(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
+            }
+            break;
+          }
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
@@ -64,31 +65,24 @@ private static final long serialVersionUID = 0L;
           }
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
-            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+            if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
               hobbies_ = new com.google.protobuf.LazyStringArrayList();
-              mutable_bitField0_ |= 0x00000001;
+              mutable_bitField0_ |= 0x00000004;
             }
             hobbies_.add(s);
             break;
           }
           case 34: {
-            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+            if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
               tags_ = com.google.protobuf.MapField.newMapField(
                   TagsDefaultEntryHolder.defaultEntry);
-              mutable_bitField0_ |= 0x00000002;
+              mutable_bitField0_ |= 0x00000008;
             }
             com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
             tags__ = input.readMessage(
                 TagsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
             tags_.getMutableMap().put(
                 tags__.getKey(), tags__.getValue());
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
             break;
           }
         }
@@ -99,7 +93,7 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000001) != 0)) {
+      if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
         hobbies_ = hobbies_.getUnmodifiableView();
       }
       this.unknownFields = unknownFields.build();
@@ -112,7 +106,6 @@ private static final long serialVersionUID = 0L;
   }
 
   @SuppressWarnings({"rawtypes"})
-  @java.lang.Override
   protected com.google.protobuf.MapField internalGetMapField(
       int number) {
     switch (number) {
@@ -123,7 +116,6 @@ private static final long serialVersionUID = 0L;
             "Invalid map field number: " + number);
     }
   }
-  @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return com.yicj.study.grpc.model.HiService.internal_static_com_yicj_study_grpc_model_HelloRequest_fieldAccessorTable
@@ -131,13 +123,12 @@ private static final long serialVersionUID = 0L;
             com.yicj.study.grpc.model.HelloRequest.class, com.yicj.study.grpc.model.HelloRequest.Builder.class);
   }
 
+  private int bitField0_;
   public static final int NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object name_;
   /**
    * <code>string name = 1;</code>
-   * @return The name.
    */
-  @java.lang.Override
   public java.lang.String getName() {
     java.lang.Object ref = name_;
     if (ref instanceof java.lang.String) {
@@ -152,9 +143,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <code>string name = 1;</code>
-   * @return The bytes for name.
    */
-  @java.lang.Override
   public com.google.protobuf.ByteString
       getNameBytes() {
     java.lang.Object ref = name_;
@@ -173,9 +162,7 @@ private static final long serialVersionUID = 0L;
   private int age_;
   /**
    * <code>int32 age = 2;</code>
-   * @return The age.
    */
-  @java.lang.Override
   public int getAge() {
     return age_;
   }
@@ -184,7 +171,6 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.LazyStringList hobbies_;
   /**
    * <code>repeated string hobbies = 3;</code>
-   * @return A list containing the hobbies.
    */
   public com.google.protobuf.ProtocolStringList
       getHobbiesList() {
@@ -192,23 +178,18 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <code>repeated string hobbies = 3;</code>
-   * @return The count of hobbies.
    */
   public int getHobbiesCount() {
     return hobbies_.size();
   }
   /**
    * <code>repeated string hobbies = 3;</code>
-   * @param index The index of the element to return.
-   * @return The hobbies at the given index.
    */
   public java.lang.String getHobbies(int index) {
     return hobbies_.get(index);
   }
   /**
    * <code>repeated string hobbies = 3;</code>
-   * @param index The index of the value to return.
-   * @return The bytes of the hobbies at the given index.
    */
   public com.google.protobuf.ByteString
       getHobbiesBytes(int index) {
@@ -245,7 +226,6 @@ private static final long serialVersionUID = 0L;
    * <code>map&lt;string, string&gt; tags = 4;</code>
    */
 
-  @java.lang.Override
   public boolean containsTags(
       java.lang.String key) {
     if (key == null) { throw new java.lang.NullPointerException(); }
@@ -254,7 +234,6 @@ private static final long serialVersionUID = 0L;
   /**
    * Use {@link #getTagsMap()} instead.
    */
-  @java.lang.Override
   @java.lang.Deprecated
   public java.util.Map<java.lang.String, java.lang.String> getTags() {
     return getTagsMap();
@@ -262,7 +241,6 @@ private static final long serialVersionUID = 0L;
   /**
    * <code>map&lt;string, string&gt; tags = 4;</code>
    */
-  @java.lang.Override
 
   public java.util.Map<java.lang.String, java.lang.String> getTagsMap() {
     return internalGetTags().getMap();
@@ -270,7 +248,6 @@ private static final long serialVersionUID = 0L;
   /**
    * <code>map&lt;string, string&gt; tags = 4;</code>
    */
-  @java.lang.Override
 
   public java.lang.String getTagsOrDefault(
       java.lang.String key,
@@ -283,7 +260,6 @@ private static final long serialVersionUID = 0L;
   /**
    * <code>map&lt;string, string&gt; tags = 4;</code>
    */
-  @java.lang.Override
 
   public java.lang.String getTagsOrThrow(
       java.lang.String key) {
@@ -297,7 +273,6 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
-  @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
     if (isInitialized == 1) return true;
@@ -307,7 +282,6 @@ private static final long serialVersionUID = 0L;
     return true;
   }
 
-  @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (!getNameBytes().isEmpty()) {
@@ -328,7 +302,6 @@ private static final long serialVersionUID = 0L;
     unknownFields.writeTo(output);
   }
 
-  @java.lang.Override
   public int getSerializedSize() {
     int size = memoizedSize;
     if (size != -1) return size;
@@ -374,16 +347,17 @@ private static final long serialVersionUID = 0L;
     }
     com.yicj.study.grpc.model.HelloRequest other = (com.yicj.study.grpc.model.HelloRequest) obj;
 
-    if (!getName()
-        .equals(other.getName())) return false;
-    if (getAge()
-        != other.getAge()) return false;
-    if (!getHobbiesList()
-        .equals(other.getHobbiesList())) return false;
-    if (!internalGetTags().equals(
-        other.internalGetTags())) return false;
-    if (!unknownFields.equals(other.unknownFields)) return false;
-    return true;
+    boolean result = true;
+    result = result && getName()
+        .equals(other.getName());
+    result = result && (getAge()
+        == other.getAge());
+    result = result && getHobbiesList()
+        .equals(other.getHobbiesList());
+    result = result && internalGetTags().equals(
+        other.internalGetTags());
+    result = result && unknownFields.equals(other.unknownFields);
+    return result;
   }
 
   @java.lang.Override
@@ -480,7 +454,6 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  @java.lang.Override
   public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
@@ -488,7 +461,6 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder(com.yicj.study.grpc.model.HelloRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-  @java.lang.Override
   public Builder toBuilder() {
     return this == DEFAULT_INSTANCE
         ? new Builder() : new Builder().mergeFrom(this);
@@ -534,7 +506,6 @@ private static final long serialVersionUID = 0L;
               "Invalid map field number: " + number);
       }
     }
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.yicj.study.grpc.model.HiService.internal_static_com_yicj_study_grpc_model_HelloRequest_fieldAccessorTable
@@ -557,7 +528,6 @@ private static final long serialVersionUID = 0L;
               .alwaysUseFieldBuilders) {
       }
     }
-    @java.lang.Override
     public Builder clear() {
       super.clear();
       name_ = "";
@@ -565,23 +535,20 @@ private static final long serialVersionUID = 0L;
       age_ = 0;
 
       hobbies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      bitField0_ = (bitField0_ & ~0x00000001);
+      bitField0_ = (bitField0_ & ~0x00000004);
       internalGetMutableTags().clear();
       return this;
     }
 
-    @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
       return com.yicj.study.grpc.model.HiService.internal_static_com_yicj_study_grpc_model_HelloRequest_descriptor;
     }
 
-    @java.lang.Override
     public com.yicj.study.grpc.model.HelloRequest getDefaultInstanceForType() {
       return com.yicj.study.grpc.model.HelloRequest.getDefaultInstance();
     }
 
-    @java.lang.Override
     public com.yicj.study.grpc.model.HelloRequest build() {
       com.yicj.study.grpc.model.HelloRequest result = buildPartial();
       if (!result.isInitialized()) {
@@ -590,56 +557,50 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    @java.lang.Override
     public com.yicj.study.grpc.model.HelloRequest buildPartial() {
       com.yicj.study.grpc.model.HelloRequest result = new com.yicj.study.grpc.model.HelloRequest(this);
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       result.name_ = name_;
       result.age_ = age_;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         hobbies_ = hobbies_.getUnmodifiableView();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000004);
       }
       result.hobbies_ = hobbies_;
       result.tags_ = internalGetTags();
       result.tags_.makeImmutable();
+      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
 
-    @java.lang.Override
     public Builder clone() {
-      return super.clone();
+      return (Builder) super.clone();
     }
-    @java.lang.Override
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return super.setField(field, value);
+      return (Builder) super.setField(field, value);
     }
-    @java.lang.Override
     public Builder clearField(
         com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return super.clearField(field);
+      return (Builder) super.clearField(field);
     }
-    @java.lang.Override
     public Builder clearOneof(
         com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return super.clearOneof(oneof);
+      return (Builder) super.clearOneof(oneof);
     }
-    @java.lang.Override
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         int index, java.lang.Object value) {
-      return super.setRepeatedField(field, index, value);
+      return (Builder) super.setRepeatedField(field, index, value);
     }
-    @java.lang.Override
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return super.addRepeatedField(field, value);
+      return (Builder) super.addRepeatedField(field, value);
     }
-    @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof com.yicj.study.grpc.model.HelloRequest) {
         return mergeFrom((com.yicj.study.grpc.model.HelloRequest)other);
@@ -661,7 +622,7 @@ private static final long serialVersionUID = 0L;
       if (!other.hobbies_.isEmpty()) {
         if (hobbies_.isEmpty()) {
           hobbies_ = other.hobbies_;
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           ensureHobbiesIsMutable();
           hobbies_.addAll(other.hobbies_);
@@ -675,12 +636,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    @java.lang.Override
     public final boolean isInitialized() {
       return true;
     }
 
-    @java.lang.Override
     public Builder mergeFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -703,7 +662,6 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object name_ = "";
     /**
      * <code>string name = 1;</code>
-     * @return The name.
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -719,7 +677,6 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string name = 1;</code>
-     * @return The bytes for name.
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -736,8 +693,6 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string name = 1;</code>
-     * @param value The name to set.
-     * @return This builder for chaining.
      */
     public Builder setName(
         java.lang.String value) {
@@ -751,7 +706,6 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string name = 1;</code>
-     * @return This builder for chaining.
      */
     public Builder clearName() {
       
@@ -761,8 +715,6 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string name = 1;</code>
-     * @param value The bytes for name to set.
-     * @return This builder for chaining.
      */
     public Builder setNameBytes(
         com.google.protobuf.ByteString value) {
@@ -779,16 +731,12 @@ private static final long serialVersionUID = 0L;
     private int age_ ;
     /**
      * <code>int32 age = 2;</code>
-     * @return The age.
      */
-    @java.lang.Override
     public int getAge() {
       return age_;
     }
     /**
      * <code>int32 age = 2;</code>
-     * @param value The age to set.
-     * @return This builder for chaining.
      */
     public Builder setAge(int value) {
       
@@ -798,7 +746,6 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>int32 age = 2;</code>
-     * @return This builder for chaining.
      */
     public Builder clearAge() {
       
@@ -809,14 +756,13 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.LazyStringList hobbies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureHobbiesIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
+      if (!((bitField0_ & 0x00000004) == 0x00000004)) {
         hobbies_ = new com.google.protobuf.LazyStringArrayList(hobbies_);
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000004;
        }
     }
     /**
      * <code>repeated string hobbies = 3;</code>
-     * @return A list containing the hobbies.
      */
     public com.google.protobuf.ProtocolStringList
         getHobbiesList() {
@@ -824,23 +770,18 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>repeated string hobbies = 3;</code>
-     * @return The count of hobbies.
      */
     public int getHobbiesCount() {
       return hobbies_.size();
     }
     /**
      * <code>repeated string hobbies = 3;</code>
-     * @param index The index of the element to return.
-     * @return The hobbies at the given index.
      */
     public java.lang.String getHobbies(int index) {
       return hobbies_.get(index);
     }
     /**
      * <code>repeated string hobbies = 3;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the hobbies at the given index.
      */
     public com.google.protobuf.ByteString
         getHobbiesBytes(int index) {
@@ -848,9 +789,6 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>repeated string hobbies = 3;</code>
-     * @param index The index to set the value at.
-     * @param value The hobbies to set.
-     * @return This builder for chaining.
      */
     public Builder setHobbies(
         int index, java.lang.String value) {
@@ -864,8 +802,6 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>repeated string hobbies = 3;</code>
-     * @param value The hobbies to add.
-     * @return This builder for chaining.
      */
     public Builder addHobbies(
         java.lang.String value) {
@@ -879,8 +815,6 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>repeated string hobbies = 3;</code>
-     * @param values The hobbies to add.
-     * @return This builder for chaining.
      */
     public Builder addAllHobbies(
         java.lang.Iterable<java.lang.String> values) {
@@ -892,18 +826,15 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>repeated string hobbies = 3;</code>
-     * @return This builder for chaining.
      */
     public Builder clearHobbies() {
       hobbies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      bitField0_ = (bitField0_ & ~0x00000001);
+      bitField0_ = (bitField0_ & ~0x00000004);
       onChanged();
       return this;
     }
     /**
      * <code>repeated string hobbies = 3;</code>
-     * @param value The bytes of the hobbies to add.
-     * @return This builder for chaining.
      */
     public Builder addHobbiesBytes(
         com.google.protobuf.ByteString value) {
@@ -947,7 +878,6 @@ private static final long serialVersionUID = 0L;
      * <code>map&lt;string, string&gt; tags = 4;</code>
      */
 
-    @java.lang.Override
     public boolean containsTags(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -956,7 +886,6 @@ private static final long serialVersionUID = 0L;
     /**
      * Use {@link #getTagsMap()} instead.
      */
-    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.String> getTags() {
       return getTagsMap();
@@ -964,7 +893,6 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>map&lt;string, string&gt; tags = 4;</code>
      */
-    @java.lang.Override
 
     public java.util.Map<java.lang.String, java.lang.String> getTagsMap() {
       return internalGetTags().getMap();
@@ -972,7 +900,6 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>map&lt;string, string&gt; tags = 4;</code>
      */
-    @java.lang.Override
 
     public java.lang.String getTagsOrDefault(
         java.lang.String key,
@@ -985,7 +912,6 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>map&lt;string, string&gt; tags = 4;</code>
      */
-    @java.lang.Override
 
     public java.lang.String getTagsOrThrow(
         java.lang.String key) {
@@ -1044,13 +970,11 @@ private static final long serialVersionUID = 0L;
           .putAll(values);
       return this;
     }
-    @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFields(unknownFields);
+      return super.setUnknownFieldsProto3(unknownFields);
     }
 
-    @java.lang.Override
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.mergeUnknownFields(unknownFields);
@@ -1072,7 +996,6 @@ private static final long serialVersionUID = 0L;
 
   private static final com.google.protobuf.Parser<HelloRequest>
       PARSER = new com.google.protobuf.AbstractParser<HelloRequest>() {
-    @java.lang.Override
     public HelloRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1090,7 +1013,6 @@ private static final long serialVersionUID = 0L;
     return PARSER;
   }
 
-  @java.lang.Override
   public com.yicj.study.grpc.model.HelloRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }

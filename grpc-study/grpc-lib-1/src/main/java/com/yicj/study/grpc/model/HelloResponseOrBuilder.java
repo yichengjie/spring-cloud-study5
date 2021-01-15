@@ -9,12 +9,10 @@ public interface HelloResponseOrBuilder extends
 
   /**
    * <code>string greeting = 1;</code>
-   * @return The greeting.
    */
   java.lang.String getGreeting();
   /**
    * <code>string greeting = 1;</code>
-   * @return The bytes for greeting.
    */
   com.google.protobuf.ByteString
       getGreetingBytes();

@@ -45,6 +45,8 @@
                 <version>${plugin.os.version}</version>
             </extension>
         </extensions>
+        <!--设置是否生成java文件之前清空outputDirectory的文件，默认值为true，设置false时会覆盖同名文件-->
+        <!---->
         <plugins>
             <plugin>
                 <groupId>org.xolstice.maven.plugins</groupId>
@@ -52,9 +54,8 @@
                 <version>${plugin.protobuf.version}</version>
                 <configuration>
                     <protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>
-                    <outputDirectory>${project.build.directory}/generated-sources/protobuf/java</outputDirectory>
-                    <!--设置是否生成java文件之前清空outputDirectory的文件，默认值为true，设置false时会覆盖同名文件-->
-                    <clearOutputDirectory>true</clearOutputDirectory>
+                    <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+                    <clearOutputDirectory>false</clearOutputDirectory>
                     <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}</protocArtifact>
                     <pluginId>grpc-java</pluginId>
                     <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
