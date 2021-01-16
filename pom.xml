@@ -86,6 +86,11 @@
                 <version>${grpc.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-server-spring-boot-starter</artifactId>
+                <version>2.1.0.RELEASE</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
