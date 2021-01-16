@@ -544,14 +544,14 @@ public final class HelloWorldProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string greeting = 1;</code>
+     * <code>string message = 1;</code>
      */
-    java.lang.String getGreeting();
+    java.lang.String getMessage();
     /**
-     * <code>string greeting = 1;</code>
+     * <code>string message = 1;</code>
      */
     com.google.protobuf.ByteString
-        getGreetingBytes();
+        getMessageBytes();
   }
   /**
    * Protobuf type {@code HelloReply}
@@ -566,7 +566,7 @@ public final class HelloWorldProto {
       super(builder);
     }
     private HelloReply() {
-      greeting_ = "";
+      message_ = "";
     }
 
     @java.lang.Override
@@ -603,7 +603,7 @@ public final class HelloWorldProto {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              greeting_ = s;
+              message_ = s;
               break;
             }
           }
@@ -630,34 +630,34 @@ public final class HelloWorldProto {
               com.yicj.study.grpc.lib.HelloWorldProto.HelloReply.class, com.yicj.study.grpc.lib.HelloWorldProto.HelloReply.Builder.class);
     }
 
-    public static final int GREETING_FIELD_NUMBER = 1;
-    private volatile java.lang.Object greeting_;
+    public static final int MESSAGE_FIELD_NUMBER = 1;
+    private volatile java.lang.Object message_;
     /**
-     * <code>string greeting = 1;</code>
+     * <code>string message = 1;</code>
      */
-    public java.lang.String getGreeting() {
-      java.lang.Object ref = greeting_;
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        greeting_ = s;
+        message_ = s;
         return s;
       }
     }
     /**
-     * <code>string greeting = 1;</code>
+     * <code>string message = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getGreetingBytes() {
-      java.lang.Object ref = greeting_;
+        getMessageBytes() {
+      java.lang.Object ref = message_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        greeting_ = b;
+        message_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -676,8 +676,8 @@ public final class HelloWorldProto {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getGreetingBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, greeting_);
+      if (!getMessageBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, message_);
       }
       unknownFields.writeTo(output);
     }
@@ -687,8 +687,8 @@ public final class HelloWorldProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!getGreetingBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, greeting_);
+      if (!getMessageBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, message_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -706,8 +706,8 @@ public final class HelloWorldProto {
       com.yicj.study.grpc.lib.HelloWorldProto.HelloReply other = (com.yicj.study.grpc.lib.HelloWorldProto.HelloReply) obj;
 
       boolean result = true;
-      result = result && getGreeting()
-          .equals(other.getGreeting());
+      result = result && getMessage()
+          .equals(other.getMessage());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -719,8 +719,8 @@ public final class HelloWorldProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + GREETING_FIELD_NUMBER;
-      hash = (53 * hash) + getGreeting().hashCode();
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -850,7 +850,7 @@ public final class HelloWorldProto {
       }
       public Builder clear() {
         super.clear();
-        greeting_ = "";
+        message_ = "";
 
         return this;
       }
@@ -874,7 +874,7 @@ public final class HelloWorldProto {
 
       public com.yicj.study.grpc.lib.HelloWorldProto.HelloReply buildPartial() {
         com.yicj.study.grpc.lib.HelloWorldProto.HelloReply result = new com.yicj.study.grpc.lib.HelloWorldProto.HelloReply(this);
-        result.greeting_ = greeting_;
+        result.message_ = message_;
         onBuilt();
         return result;
       }
@@ -916,8 +916,8 @@ public final class HelloWorldProto {
 
       public Builder mergeFrom(com.yicj.study.grpc.lib.HelloWorldProto.HelloReply other) {
         if (other == com.yicj.study.grpc.lib.HelloWorldProto.HelloReply.getDefaultInstance()) return this;
-        if (!other.getGreeting().isEmpty()) {
-          greeting_ = other.greeting_;
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -947,71 +947,71 @@ public final class HelloWorldProto {
         return this;
       }
 
-      private java.lang.Object greeting_ = "";
+      private java.lang.Object message_ = "";
       /**
-       * <code>string greeting = 1;</code>
+       * <code>string message = 1;</code>
        */
-      public java.lang.String getGreeting() {
-        java.lang.Object ref = greeting_;
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          greeting_ = s;
+          message_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string greeting = 1;</code>
+       * <code>string message = 1;</code>
        */
       public com.google.protobuf.ByteString
-          getGreetingBytes() {
-        java.lang.Object ref = greeting_;
+          getMessageBytes() {
+        java.lang.Object ref = message_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          greeting_ = b;
+          message_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string greeting = 1;</code>
+       * <code>string message = 1;</code>
        */
-      public Builder setGreeting(
+      public Builder setMessage(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        greeting_ = value;
+        message_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string greeting = 1;</code>
+       * <code>string message = 1;</code>
        */
-      public Builder clearGreeting() {
+      public Builder clearMessage() {
         
-        greeting_ = getDefaultInstance().getGreeting();
+        message_ = getDefaultInstance().getMessage();
         onChanged();
         return this;
       }
       /**
-       * <code>string greeting = 1;</code>
+       * <code>string message = 1;</code>
        */
-      public Builder setGreetingBytes(
+      public Builder setMessageBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        greeting_ = value;
+        message_ = value;
         onChanged();
         return this;
       }
@@ -1084,10 +1084,10 @@ public final class HelloWorldProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\020helloworld.proto\"\034\n\014HelloRequest\022\014\n\004na" +
-      "me\030\001 \001(\t\"\036\n\nHelloReply\022\020\n\010greeting\030\001 \001(\t" +
-      "20\n\006Simple\022&\n\010sayHello\022\r.HelloRequest\032\013." +
-      "HelloReplyB*\n\027com.yicj.study.grpc.libB\017H" +
-      "elloWorldProtob\006proto3"
+      "me\030\001 \001(\t\"\035\n\nHelloReply\022\017\n\007message\030\001 \001(\t2" +
+      "0\n\006Simple\022&\n\010sayHello\022\r.HelloRequest\032\013.H" +
+      "elloReplyB*\n\027com.yicj.study.grpc.libB\017He" +
+      "lloWorldProtob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1112,7 +1112,7 @@ public final class HelloWorldProto {
     internal_static_HelloReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_HelloReply_descriptor,
-        new java.lang.String[] { "Greeting", });
+        new java.lang.String[] { "Message", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

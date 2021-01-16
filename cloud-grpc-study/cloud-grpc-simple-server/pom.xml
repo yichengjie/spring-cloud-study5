@@ -32,6 +32,11 @@
             <artifactId>grpc-server-spring-boot-starter</artifactId>
         </dependency>
 
+        <!--<dependency>
+            <groupId>io.zipkin.brave</groupId>
+            <artifactId>brave-instrumentation-grpc</artifactId>
+        </dependency>-->
+
         <dependency>
             <groupId>com.yicj.study</groupId>
             <artifactId>cloud-grpc-lib-1</artifactId>

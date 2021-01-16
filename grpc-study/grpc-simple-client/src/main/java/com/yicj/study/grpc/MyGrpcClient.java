@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MyGrpcClient {
 
     public static void main(String[] args) throws Exception{
-        ManagedChannel channel =
+              ManagedChannel channel =
                 ManagedChannelBuilder.forAddress("localhost", 8082).usePlaintext().build() ;
         HelloServiceGrpc.HelloServiceBlockingStub stub =
                 HelloServiceGrpc.newBlockingStub(channel) ;

@@ -42,7 +42,7 @@
         <spring-cloud.version>Greenwich.SR4</spring-cloud.version>
         <protobuf.version>3.5.1</protobuf.version>
         <plugin.protobuf.version>0.5.1</plugin.protobuf.version>
-        <grpc.version>1.11.0</grpc.version>
+        <grpc.version>1.14.0</grpc.version>
         <plugin.os.version>1.5.0.Final</plugin.os.version>
     </properties>
 
@@ -89,7 +89,19 @@
             <dependency>
                 <groupId>net.devh</groupId>
                 <artifactId>grpc-server-spring-boot-starter</artifactId>
-                <version>2.1.0.RELEASE</version>
+                <version>2.0.1.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-client-spring-boot-starter</artifactId>
+                <version>2.0.1.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.zipkin.brave</groupId>
+                <artifactId>brave-instrumentation-grpc</artifactId>
+                <version>5.1.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
