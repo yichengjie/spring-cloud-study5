@@ -1,6 +1,7 @@
 package com.yicj.study.grpc.service;
 
-import com.yicj.study.grpc.lib.HelloWorldProto;
+import com.yicj.study.grpc.lib.HelloReply;
+import com.yicj.study.grpc.lib.HelloRequest;
 import com.yicj.study.grpc.lib.SimpleGrpc;
 import io.grpc.Channel;
 import net.devh.springboot.autoconfigure.grpc.client.GrpcClient;
@@ -15,9 +16,9 @@ public class GrpcClientService {
 
     public String sendMessage(String name){
         SimpleGrpc.SimpleBlockingStub stub = SimpleGrpc.newBlockingStub(serverChannel) ;
-        HelloWorldProto.HelloRequest request =
-                HelloWorldProto.HelloRequest.newBuilder().setName(name).build();
-        HelloWorldProto.HelloReply response = stub.sayHello(request);
+        HelloRequest request =
+                HelloRequest.newBuilder().setName(name).build();
+        HelloReply response = stub.sayHello(request);
         return response.getMessage() ;
     }
 }

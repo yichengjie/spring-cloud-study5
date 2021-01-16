@@ -27,30 +27,30 @@ public final class SimpleGrpc {
   public static final String SERVICE_NAME = "Simple";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest,
-      com.yicj.study.grpc.lib.HelloWorldProto.HelloReply> getSayHelloMethod;
+  private static volatile io.grpc.MethodDescriptor<com.yicj.study.grpc.lib.HelloRequest,
+      com.yicj.study.grpc.lib.HelloReply> getSayHelloMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "sayHello",
-      requestType = com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest.class,
-      responseType = com.yicj.study.grpc.lib.HelloWorldProto.HelloReply.class,
+      requestType = com.yicj.study.grpc.lib.HelloRequest.class,
+      responseType = com.yicj.study.grpc.lib.HelloReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest,
-      com.yicj.study.grpc.lib.HelloWorldProto.HelloReply> getSayHelloMethod() {
-    io.grpc.MethodDescriptor<com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest, com.yicj.study.grpc.lib.HelloWorldProto.HelloReply> getSayHelloMethod;
+  public static io.grpc.MethodDescriptor<com.yicj.study.grpc.lib.HelloRequest,
+      com.yicj.study.grpc.lib.HelloReply> getSayHelloMethod() {
+    io.grpc.MethodDescriptor<com.yicj.study.grpc.lib.HelloRequest, com.yicj.study.grpc.lib.HelloReply> getSayHelloMethod;
     if ((getSayHelloMethod = SimpleGrpc.getSayHelloMethod) == null) {
       synchronized (SimpleGrpc.class) {
         if ((getSayHelloMethod = SimpleGrpc.getSayHelloMethod) == null) {
           SimpleGrpc.getSayHelloMethod = getSayHelloMethod = 
-              io.grpc.MethodDescriptor.<com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest, com.yicj.study.grpc.lib.HelloWorldProto.HelloReply>newBuilder()
+              io.grpc.MethodDescriptor.<com.yicj.study.grpc.lib.HelloRequest, com.yicj.study.grpc.lib.HelloReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "Simple", "sayHello"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest.getDefaultInstance()))
+                  com.yicj.study.grpc.lib.HelloRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.yicj.study.grpc.lib.HelloWorldProto.HelloReply.getDefaultInstance()))
+                  com.yicj.study.grpc.lib.HelloReply.getDefaultInstance()))
                   .setSchemaDescriptor(new SimpleMethodDescriptorSupplier("sayHello"))
                   .build();
           }
@@ -88,8 +88,8 @@ public final class SimpleGrpc {
 
     /**
      */
-    public void sayHello(com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest request,
-        io.grpc.stub.StreamObserver<com.yicj.study.grpc.lib.HelloWorldProto.HelloReply> responseObserver) {
+    public void sayHello(com.yicj.study.grpc.lib.HelloRequest request,
+        io.grpc.stub.StreamObserver<com.yicj.study.grpc.lib.HelloReply> responseObserver) {
       asyncUnimplementedUnaryCall(getSayHelloMethod(), responseObserver);
     }
 
@@ -99,8 +99,8 @@ public final class SimpleGrpc {
             getSayHelloMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest,
-                com.yicj.study.grpc.lib.HelloWorldProto.HelloReply>(
+                com.yicj.study.grpc.lib.HelloRequest,
+                com.yicj.study.grpc.lib.HelloReply>(
                   this, METHODID_SAY_HELLO)))
           .build();
     }
@@ -126,8 +126,8 @@ public final class SimpleGrpc {
 
     /**
      */
-    public void sayHello(com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest request,
-        io.grpc.stub.StreamObserver<com.yicj.study.grpc.lib.HelloWorldProto.HelloReply> responseObserver) {
+    public void sayHello(com.yicj.study.grpc.lib.HelloRequest request,
+        io.grpc.stub.StreamObserver<com.yicj.study.grpc.lib.HelloReply> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getSayHelloMethod(), getCallOptions()), request, responseObserver);
     }
@@ -153,7 +153,7 @@ public final class SimpleGrpc {
 
     /**
      */
-    public com.yicj.study.grpc.lib.HelloWorldProto.HelloReply sayHello(com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest request) {
+    public com.yicj.study.grpc.lib.HelloReply sayHello(com.yicj.study.grpc.lib.HelloRequest request) {
       return blockingUnaryCall(
           getChannel(), getSayHelloMethod(), getCallOptions(), request);
     }
@@ -179,8 +179,8 @@ public final class SimpleGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.yicj.study.grpc.lib.HelloWorldProto.HelloReply> sayHello(
-        com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.yicj.study.grpc.lib.HelloReply> sayHello(
+        com.yicj.study.grpc.lib.HelloRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getSayHelloMethod(), getCallOptions()), request);
     }
@@ -206,8 +206,8 @@ public final class SimpleGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_SAY_HELLO:
-          serviceImpl.sayHello((com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest) request,
-              (io.grpc.stub.StreamObserver<com.yicj.study.grpc.lib.HelloWorldProto.HelloReply>) responseObserver);
+          serviceImpl.sayHello((com.yicj.study.grpc.lib.HelloRequest) request,
+              (io.grpc.stub.StreamObserver<com.yicj.study.grpc.lib.HelloReply>) responseObserver);
           break;
         default:
           throw new AssertionError();
