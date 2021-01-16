@@ -23,6 +23,7 @@
         <module>ribbon-study</module>
         <module>protobuf-study</module>
         <module>grpc-study</module>
+        <module>cloud-grpc-study</module>
     </modules>
     <packaging>pom</packaging>
 

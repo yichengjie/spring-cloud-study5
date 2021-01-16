@@ -1,0 +1,15 @@
+syntax = "proto3" ;
+option java_package ="com.yicj.study.grpc.lib" ;
+option java_outer_classname ="HelloWorldProto" ;
+
+message HelloRequest{
+   string name =1 ;
+}
+
+message HelloReply{
+    string greeting = 1 ;
+}
+
+service Simple{
+    rpc sayHello(HelloRequest) returns (HelloReply) ;
+}
