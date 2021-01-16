@@ -18,7 +18,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.11.0)",
+    value = "by gRPC proto compiler (version 1.14.0)",
     comments = "Source: helloworld.proto")
 public final class SimpleGrpc {
 
@@ -27,22 +27,16 @@ public final class SimpleGrpc {
   public static final String SERVICE_NAME = "Simple";
 
   // Static method descriptors that strictly reflect the proto.
-  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  @java.lang.Deprecated // Use {@link #getSayHelloMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest,
-      com.yicj.study.grpc.lib.HelloWorldProto.HelloReply> METHOD_SAY_HELLO = getSayHelloMethodHelper();
-
   private static volatile io.grpc.MethodDescriptor<com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest,
       com.yicj.study.grpc.lib.HelloWorldProto.HelloReply> getSayHelloMethod;
 
-  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "sayHello",
+      requestType = com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest.class,
+      responseType = com.yicj.study.grpc.lib.HelloWorldProto.HelloReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest,
       com.yicj.study.grpc.lib.HelloWorldProto.HelloReply> getSayHelloMethod() {
-    return getSayHelloMethodHelper();
-  }
-
-  private static io.grpc.MethodDescriptor<com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest,
-      com.yicj.study.grpc.lib.HelloWorldProto.HelloReply> getSayHelloMethodHelper() {
     io.grpc.MethodDescriptor<com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest, com.yicj.study.grpc.lib.HelloWorldProto.HelloReply> getSayHelloMethod;
     if ((getSayHelloMethod = SimpleGrpc.getSayHelloMethod) == null) {
       synchronized (SimpleGrpc.class) {
@@ -96,13 +90,13 @@ public final class SimpleGrpc {
      */
     public void sayHello(com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest request,
         io.grpc.stub.StreamObserver<com.yicj.study.grpc.lib.HelloWorldProto.HelloReply> responseObserver) {
-      asyncUnimplementedUnaryCall(getSayHelloMethodHelper(), responseObserver);
+      asyncUnimplementedUnaryCall(getSayHelloMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getSayHelloMethodHelper(),
+            getSayHelloMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest,
@@ -135,7 +129,7 @@ public final class SimpleGrpc {
     public void sayHello(com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest request,
         io.grpc.stub.StreamObserver<com.yicj.study.grpc.lib.HelloWorldProto.HelloReply> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getSayHelloMethodHelper(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getSayHelloMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -161,7 +155,7 @@ public final class SimpleGrpc {
      */
     public com.yicj.study.grpc.lib.HelloWorldProto.HelloReply sayHello(com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest request) {
       return blockingUnaryCall(
-          getChannel(), getSayHelloMethodHelper(), getCallOptions(), request);
+          getChannel(), getSayHelloMethod(), getCallOptions(), request);
     }
   }
 
@@ -188,7 +182,7 @@ public final class SimpleGrpc {
     public com.google.common.util.concurrent.ListenableFuture<com.yicj.study.grpc.lib.HelloWorldProto.HelloReply> sayHello(
         com.yicj.study.grpc.lib.HelloWorldProto.HelloRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(getSayHelloMethodHelper(), getCallOptions()), request);
+          getChannel().newCall(getSayHelloMethod(), getCallOptions()), request);
     }
   }
 
@@ -276,7 +270,7 @@ public final class SimpleGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new SimpleFileDescriptorSupplier())
-              .addMethod(getSayHelloMethodHelper())
+              .addMethod(getSayHelloMethod())
               .build();
         }
       }
