@@ -10,7 +10,6 @@ import org.springframework.core.annotation.Order;
 @Order
 @Configuration
 public class GlobalClientInterceptorConfiguration {
-
     @Bean
     public GlobalServerInterceptorConfigurerAdapter globalInterceptorConfigurerAdapter() {
         return new GlobalServerInterceptorConfigurerAdapter() {
