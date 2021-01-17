@@ -1,6 +1,6 @@
 package com.yicj.study.feign.service;
 
-import com.yicj.study.feignconfig.HelloFeignServiceConfig;
+import com.yicj.study.feign.config.HelloFeignServiceConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
