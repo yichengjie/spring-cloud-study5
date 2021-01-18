@@ -26,7 +26,7 @@
         <module>cloud-grpc-study</module>
         <module>cloud-dubbo-study</module>
         <module>postprocessor-study</module>
-        <module>hello-world</module>
+        <module>named-context-factory-study</module>
     </modules>
     <packaging>pom</packaging>
 
