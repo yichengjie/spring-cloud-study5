@@ -1,5 +1,8 @@
 package com.yicj.study.namedcontextfactory2.config;
 
+import com.yicj.study.factory2.config.CommonContextAutoConfiguration;
+import com.yicj.study.factory2.config.Hello1ContextAutoConfiguration;
+import com.yicj.study.factory2.config.HelloContextAutoConfiguration;
 import com.yicj.study.namedcontextfactory2.component.HelloSpecification;
 import com.yicj.study.namedcontextfactory2.component.MyHelloContextFactory;
 import com.yicj.study.namedcontextfactory2.service.HelloBean;

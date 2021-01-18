@@ -1,8 +1,7 @@
-package com.yicj.study.namedcontextfactory2.config;
+package com.yicj.study.factory2.config;
 
 import com.yicj.study.namedcontextfactory2.anno.AvoidScan;
-import com.yicj.study.namedcontextfactory2.service.IHelloContext;
-import com.yicj.study.namedcontextfactory2.service.impl.MyContextBean;
+import com.yicj.study.namedcontextfactory2.service.impl.MyShowContextBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -12,15 +11,14 @@ import org.springframework.context.annotation.Configuration;
 @AvoidScan
 @Configuration
 @EnableConfigurationProperties
-public class Hello1ContextAutoConfiguration {
-
-    private String client = "test1";
-
+public class CommonContextAutoConfiguration {
+    private String client = "common";
     @Value("${testcontext.name:hello}")
-    String name;
+    private String name;
 
     @Bean
-    public IHelloContext getTestContext() {
-        return new MyContextBean(client+":"+name);
+    @ConditionalOnMissingBean
+    public MyShowContextBean getCommonContext() {
+        return new MyShowContextBean(client + ":" + name);
     }
 }

@@ -1,6 +1,6 @@
 package com.yicj.study.namedcontextfactory2.component;
 
-import com.yicj.study.namedcontextfactory2.config.HelloContextAutoConfiguration;
+import com.yicj.study.factory2.config.HelloContextAutoConfiguration;
 import com.yicj.study.namedcontextfactory2.service.impl.MyContextBean;
 import com.yicj.study.namedcontextfactory2.service.impl.MyShowContextBean;
 import org.springframework.cloud.context.named.NamedContextFactory;
