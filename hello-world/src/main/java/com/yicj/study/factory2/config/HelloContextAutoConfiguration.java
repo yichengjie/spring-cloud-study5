@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties
 public class HelloContextAutoConfiguration {
     private String client = "test0";
-    @Value("${hellocontext.name:hello}")
+    @Value("${testcontext.name:hello}")
     private String name;
 
     @Bean
