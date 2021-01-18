@@ -1,4 +1,4 @@
-package com.yicj.study.factory2.config;
+package com.yicj.study.namedcontextfactory2.config;
 
 import com.yicj.study.namedcontextfactory2.anno.AvoidScan;
 import com.yicj.study.namedcontextfactory2.service.IHelloContext;
