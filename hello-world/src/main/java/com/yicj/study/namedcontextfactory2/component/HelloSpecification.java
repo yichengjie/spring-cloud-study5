@@ -15,7 +15,6 @@ public class HelloSpecification implements NamedContextFactory.Specification {
     }
     @Override
     public Class<?>[] getConfiguration() {
-        // TODO Auto-generated method stub
         return configuration;
     }
     public void setName(String name) {

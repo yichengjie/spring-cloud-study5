@@ -18,8 +18,8 @@ public class Hello1ContextAutoConfiguration {
 
     @Value("${testcontext.name:hello}")
     String name;
+
     @Bean
-    @ConditionalOnMissingBean
     public IHelloContext getTestContext() {
         return new MyContextBean(client+":"+name);
     }

@@ -18,7 +18,6 @@ public class CommonContextAutoConfiguration {
     private String name;
 
     @Bean
-    @ConditionalOnMissingBean
     public MyShowContextBean getCommonContext() {
         return new MyShowContextBean(client + ":" + name);
     }
