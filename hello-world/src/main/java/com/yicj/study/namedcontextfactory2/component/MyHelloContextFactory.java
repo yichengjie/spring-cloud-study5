@@ -9,7 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class MyHelloContextFactory extends NamedContextFactory<HelloSpecification> {
 
     public MyHelloContextFactory() {
-//      自定义自动配置类
+        //自定义自动配置类
         super(HelloContextAutoConfiguration.class, "testcontext", "testcontext.name");
     }
     public MyContextBean getMyContextBean(String name) {

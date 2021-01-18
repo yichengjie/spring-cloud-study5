@@ -2,6 +2,7 @@ package com.yicj.study.namedcontextfactory2.config;
 
 import com.yicj.study.namedcontextfactory2.component.HelloSpecification;
 import com.yicj.study.namedcontextfactory2.component.MyHelloContextFactory;
+import com.yicj.study.namedcontextfactory2.service.HelloBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,6 +11,15 @@ import java.util.List;
 
 @Configuration
 public class MyConfig {
+
+
+    @Bean
+    public HelloBean helloBean(){
+        HelloBean helloBean = new HelloBean();
+        helloBean.setName("parent hello bean");
+        return helloBean;
+    }
+
     /**
      * 先定义一个ContextFactory对象,通过TestSpecification定义不同命名的
      * 子context需要加载的configuration，当命名是以default开头的，所有的
