@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties
 public class CommonContextAutoConfiguration {
     private String client = "common";
-    @Value("${testcontext.name:hello}")
+    @Value("${helloContext.name:hello}")
     private String name;
 
     @Bean

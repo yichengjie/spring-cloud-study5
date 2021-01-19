@@ -8,13 +8,21 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.core.env.MapPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Collections;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = HelloApplication.class)
 public class HelloApplicationTest {
     @Autowired
     private MyHelloContextFactory contextFactory;
+    @Autowired
+    private ApplicationContext context ;
 
     /**
      *  当传参是定义TestSpecification时的命名，生成子context时就是用对应的configuration
@@ -38,7 +46,8 @@ public class HelloApplicationTest {
         MyShowContextBean showContextBean2 = contextFactory.getMyShowContextBean("noname");
         System.out.println("===> showContextBean2: " + showContextBean2);
         System.out.println("==============================================");
-        //context.getBean(MyContextBean.class);
+        //MyContextBean bean = context.getBean(MyContextBean.class);
+        //System.out.println("===> " + bean);
     }
 
 }

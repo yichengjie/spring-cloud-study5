@@ -10,7 +10,7 @@ public class MyHelloContextFactory extends NamedContextFactory<HelloSpecificatio
 
     public MyHelloContextFactory() {
         //自定义自动配置类
-        super(HelloContextAutoConfiguration.class, "testcontext", "testcontext.name");
+        super(HelloContextAutoConfiguration.class, "helloContext", "helloContext.name");
     }
     public MyContextBean getMyContextBean(String name) {
         //自定义接口类型

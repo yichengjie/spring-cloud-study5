@@ -16,7 +16,7 @@ public class Hello1ContextAutoConfiguration {
 
     private String client = "test1";
 
-    @Value("${testcontext.name:hello}")
+    @Value("${helloContext.name:hello}")
     private String name;
 
     @Bean
