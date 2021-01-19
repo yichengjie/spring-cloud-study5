@@ -13,6 +13,7 @@ import org.springframework.context.annotation.FilterType;
 })
 public class HelloApplication {
 
+    //https://www.jianshu.com/p/6ca1e73816bb
     public static void main(String[] args) {
         SpringApplication.run(HelloApplication.class, args) ;
     }
