@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 注意如果locator.enabled为true，且locator.lower-case-service-id为true时，路由规则配置将不生效
+          lower-case-service-id: false
+          enabled: true
+

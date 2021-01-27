@@ -27,6 +27,7 @@
         <module>cloud-dubbo-study</module>
         <module>postprocessor-study</module>
         <module>named-context-factory-study</module>
+        <module>gateway-study3</module>
     </modules>
     <packaging>pom</packaging>
 
