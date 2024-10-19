@@ -1,0 +1,5 @@
+### GET请求
+GET http://localhost:8083/hello?name={{$random.alphanumeric(8)}}
+
+### GET hello2
+GET http://localhost:8083/hello2?name={{$random.alphanumeric(8)}}
