@@ -48,7 +48,7 @@
     }
     ```
 2. 将自己的bean注入到spring容器(FeignClientFactoryBean)
-    ```txt
+    ```java
     private void registerFeignClient(BeanDefinitionRegistry registry,
                 AnnotationMetadata annotationMetadata, Map<String, Object> attributes) {
         String className = annotationMetadata.getClassName();

@@ -1,14 +1,16 @@
 #### 认证服务器开发
 1. 添加依赖
     ```xml
-    <dependency>
-       <groupId>org.springframework.cloud</groupId>
-       <artifactId>spring-cloud-starter-oauth2</artifactId>
-    </dependency>
-    <dependency>
-       <groupId>org.springframework.cloud</groupId>
-       <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
+   <dependencies>
+       <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-oauth2</artifactId>
+       </dependency>
+       <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+       </dependency>
+   </dependencies>
     ```
 2. 编写配信息
     ```properties
@@ -32,7 +34,7 @@
        }
    }
    ```
-3. Web安全配置编写
+4. Web安全配置编写
    ```java
    @Configuration
    @EnableWebSecurity
@@ -54,7 +56,7 @@
        }
    }
    ```
-4. 认证服务器配置编写
+5. 认证服务器配置编写
    ```java
    @Configuration
    @EnableAuthorizationServer
@@ -89,7 +91,7 @@
        }
    }
    ```
-5. 验证认证服务器,获取token
+6. 验证认证服务器,获取token
     ```properties
     5.1 请求地址http://localhost:7777/uua/oauth/token发送post请求
     5.2 header添加 Authorization  Basic 客户端用户名密码（zuul_server：secret）
